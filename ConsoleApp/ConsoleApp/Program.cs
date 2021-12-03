@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace ConsoleApp
 {
@@ -9,13 +10,83 @@ namespace ConsoleApp
     {
         public static void Main(string[] args)
         {
-            //CastingExample();
-
-            //ConditionalStatementExample();
-
-            ArrayExample();
+            var res = "N";
+            do
+            {
+                //CastingExample();
+                //ConditionalStatementExample();
+                //ArrayExample();
+                //LoopingStatements();
+                //LoopingStatementsV2();
+                LoopingStatementV3();
+                Console.Write("Do you want to continue more (y/n)? ");
+                res = Console.ReadLine();
+            } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void LoopingStatementV3()
+        {
+            string str = "abc";
+            string[] arr = new string[] { "Bibash", "Ashwin", "Aakash", "Chandan" };
+            Console.WriteLine("using foreach loop");
+            //Console.WriteLine(arr[1]);
+            int counter = 0;
+            foreach (var item in arr)
+            {
+                counter++;
+                Console.WriteLine(item.Length);
+            }
+
+            Console.WriteLine("Using for loop");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i].Length);
+            }
+
+            //for (int i = 0; i < str.Length; i++)
+            //{
+            //    Console.WriteLine("{0} => {1}", str[i], (int)str[i]);
+            //}
+        }
+
+        private static void LoopingStatementsV2()
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    //TODO: Bibash will add this later
+                    break;
+                }
+                Console.WriteLine(i);
+            }
+
+            ////for loop infinite
+            //for (; ; )
+            //{
+            //}
+        }
+
+        private static void LoopingStatements()
+        {
+            ////infinite looping
+            //do
+            //{
+            //} while (true);
+            //while (true)
+            //{
+            //}
+            Console.WriteLine("Enter the number of which table needs to be displayed");
+            var num = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= 100; i++)
+            {
+                var inputs = new string[] { num.ToString(), i.ToString(), (num * i).ToString() };
+
+                var str = string.Format("{0} x {1} = {2}", inputs);
+                Console.WriteLine(str);
+            }
         }
 
         private static void ArrayExample()
