@@ -18,12 +18,26 @@ namespace ConsoleApp
                 //ArrayExample();
                 //LoopingStatements();
                 //LoopingStatementsV2();
-                LoopingStatementV3();
+                //LoopingStatementV3();
+                ClassesExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void ClassesExample()
+        {
+            HumanBeing h1 = new HumanBeing();
+            HumanBeing h2 = new HumanBeing("Bibash");
+            //h2 = new HumanBeing();
+            h1 = new HumanBeing("Nabin");
+            //h1.RaiseHand();
+            h1.RaiseHand("left");
+            h1.RaiseHand("right");
+            h2.RaiseHand("left");
+            h2.RaiseHand("right");
         }
 
         private static void LoopingStatementV3()
@@ -58,7 +72,7 @@ namespace ConsoleApp
                 if (i % 5 == 0)
                 {
                     //TODO: Bibash will add this later
-                    break;
+                    continue;
                 }
                 Console.WriteLine(i);
             }
