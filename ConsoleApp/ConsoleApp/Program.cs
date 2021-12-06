@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +20,28 @@ namespace ConsoleApp
                 //LoopingStatements();
                 //LoopingStatementsV2();
                 //LoopingStatementV3();
-                ClassesExample();
+                //ClassesExample();
+                PropertiesExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void PropertiesExample()
+        {
+            Marks m1 = new Marks(100, 50);
+            Marks m2 = new Marks(110, -5);
+            Console.WriteLine($"M1  has \nScience => {m1.Science}\nMath => {m1.Math}\nTotal => {m1.Total}\nPercentage => {m1.Percentage}\nDivision => {m1.Division} ");
+            Console.WriteLine("=======================================");
+            Console.WriteLine($"M2  has \nScience => {m2.Science}\nMath => {m2.Math}\nTotal => {m2.Total}\nPercentage => {m2.Percentage}\nDivision => {m2.Division} ");
+            m1.Math = 200;
+            Console.WriteLine("=======================================");
+            Console.WriteLine(JsonConvert.SerializeObject(m1, Formatting.Indented));
+            var m3 = JsonConvert.DeserializeObject<Marks>("{\"Math\":200.0,\"Science\":75.0}");
+            Console.WriteLine("=======================================");
+            Console.WriteLine($"M3  has \nScience => {m3.Science}\nMath => {m3.Math}\nTotal => {m3.Total}\nPercentage => {m3.Percentage}\nDivision => {m3.Division} ");
         }
 
         private static void ClassesExample()
@@ -38,6 +55,7 @@ namespace ConsoleApp
             h1.RaiseHand("right");
             h2.RaiseHand("left");
             h2.RaiseHand("right");
+            Console.WriteLine(h1._Name);
         }
 
         private static void LoopingStatementV3()

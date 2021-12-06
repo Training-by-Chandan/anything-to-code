@@ -35,6 +35,31 @@ namespace ConsoleApp
             Console.WriteLine("{1} moves {0} hand", hand, name);
         }
 
-        public string name;
+        private string name;
+
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+
+        public string GetName()
+        {
+            return this.name;
+        }
+
+        public string Name { get; set; }
+
+        private string _name;
+
+        public string _Name
+        {
+            get { return _name; }
+            private set { _name = value; }
+        }
+
+        public void _setName()
+        {
+            _Name = "";
+        }
     }
 }
