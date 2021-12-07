@@ -21,7 +21,9 @@ namespace ConsoleApp
                 //LoopingStatementsV2();
                 //LoopingStatementV3();
                 //ClassesExample();
-                PropertiesExample();
+                //PropertiesExample();
+                //OperatorOverloadingExample();
+                IndexerExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
@@ -29,10 +31,43 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
+        private static void IndexerExample()
+        {
+            OurList ol = new OurList(new string[] { "Sunday", "Monday", "Tuesday" });
+            Console.WriteLine(ol[1]);
+            ol[1] = "monday";
+            ol.Resize(5);
+            Console.WriteLine(ol[1]);
+        }
+
+        private static void OperatorOverloadingExample()
+        {
+            int x = 10;
+            int y = 20;
+            int i = x + y;
+            Marks m1 = new Marks(50, 20, 20);
+            Marks m2 = new Marks(20, 10, 20);
+            var m3 = m1 + m2;
+            var m4 = m1 + m3;
+            var m5 = m1 + m2 + m3 + m4;
+            m1++;
+            var marks = m1 + 5;
+            m1 = new Marks(10, 10, 20);
+            m2 = new Marks(10, 10, 20);
+            Console.WriteLine(m1 == m2);
+        }
+
         private static void PropertiesExample()
         {
-            Marks m1 = new Marks(100, 50);
-            Marks m2 = new Marks(110, -5);
+            int x = 10;
+            int y = 20;
+            int i = x + y;
+            Marks m1 = new Marks(50, 20);
+            Marks m2 = new Marks(20, 10);
+            var my = new Marks(m1);
+            var mx = m1 + m2;
+            m1++;
+            var marks = m1 + 5;
             Console.WriteLine($"M1  has \nScience => {m1.Science}\nMath => {m1.Math}\nTotal => {m1.Total}\nPercentage => {m1.Percentage}\nDivision => {m1.Division} ");
             Console.WriteLine("=======================================");
             Console.WriteLine($"M2  has \nScience => {m2.Science}\nMath => {m2.Math}\nTotal => {m2.Total}\nPercentage => {m2.Percentage}\nDivision => {m2.Division} ");

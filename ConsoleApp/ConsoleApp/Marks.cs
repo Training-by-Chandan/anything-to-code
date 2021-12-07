@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp
+﻿using System;
+
+namespace ConsoleApp
 {
     public class Marks
     {
@@ -6,10 +8,24 @@
         {
         }
 
-        public Marks(decimal math, decimal science)
+        public Marks(Marks m1)
+        {
+            Math = m1.Math;
+            Science = m1.Science;
+            English = m1.English;
+        }
+
+        public Marks(decimal Math, decimal Science)
+        {
+            this.Math = Math;
+            Science = Science;
+        }
+
+        public Marks(decimal math, decimal science, decimal english)
         {
             this.Math = math;
             this.Science = science;
+            this.English = english;
         }
 
         private decimal _math;
@@ -18,6 +34,14 @@
         {
             get { return _math; }
             set { _math = _validateMarks(value); }
+        }
+
+        private decimal _english;
+
+        public decimal English
+        {
+            get { return _english; }
+            set { _english = _validateMarks(value); }
         }
 
         private decimal _science;
@@ -55,6 +79,26 @@
                     return "Failed";
             }
         }
+
+        public static Marks operator +(Marks m1, Marks m2) => new Marks(m1.Math + m2.Math, m1.Science + m2.Science, m1.English + m2.English);
+
+        public static Marks operator +(Marks m1, int number)
+        {
+            return new Marks(m1.Math + number, m1.Science + number, m1.English + number);
+        }
+
+        public static Marks operator ++(Marks m1)
+            => new Marks(m1.Math + 1, m1.Science + 1, m1.English + 1);
+
+        public static bool operator ==(Marks m1, Marks m2)
+        {
+            return (m1.Math == m2.Math && m1.Science == m2.Science);
+        }
+
+        public static bool operator !=(Marks m1, Marks m2)
+        {
+            return !(m1.Math == m2.Math && m1.Science == m2.Science && m1.English == m2.English);
+        }
     }
 
     public class Student
@@ -71,6 +115,27 @@
                 if (string.IsNullOrWhiteSpace(MiddleName)) return FirstName + " " + LastName;
                 else return $"{FirstName} {MiddleName} {LastName}";
             }
+        }
+    }
+
+    public class OurList
+    {
+        public string[] test;
+
+        public OurList(string[] test)
+        {
+            this.test = test;
+        }
+
+        public string this[int i]
+        {
+            get { return test[i]; }
+            set { test[i] = value; }
+        }
+
+        public void Resize(int newSize)
+        {
+            Array.Resize(ref test, newSize);
         }
     }
 
