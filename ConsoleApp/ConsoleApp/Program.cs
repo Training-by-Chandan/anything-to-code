@@ -23,12 +23,35 @@ namespace ConsoleApp
                 //ClassesExample();
                 //PropertiesExample();
                 //OperatorOverloadingExample();
-                IndexerExample();
+                //IndexerExample();
+                StaticAndNonStaticExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void StaticAndNonStaticExample()
+        {
+            //StaticClass staticClass = new StaticClass(); //not valid
+            StaticClass.I = 10;
+            StaticClass.Name = "Chandan";
+            StaticClass.SomeFunction();
+
+            NonStaticClass nonStatic = new NonStaticClass();
+
+            nonStatic.I = 10;
+            //nonStatic.Name = "Some Name";
+            //nonStatic.SomeFunction();
+            NonStaticClass nonStatic1 = new NonStaticClass();
+            nonStatic1.I = 20;
+            NonStaticClass nonStatic2 = new NonStaticClass();
+            nonStatic2.I = 30;
+
+            nonStatic.SomeFunction();
+            nonStatic1.SomeFunction();
+            nonStatic2.SomeFunction();
         }
 
         private static void IndexerExample()
