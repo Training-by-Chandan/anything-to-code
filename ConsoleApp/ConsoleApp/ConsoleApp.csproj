@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HumanBeing.cs" />
+    <Compile Include="Inheritance.cs" />
     <Compile Include="Marks.cs" />
     <Compile Include="NonStaticClass.cs" />
     <Compile Include="Program.cs" />

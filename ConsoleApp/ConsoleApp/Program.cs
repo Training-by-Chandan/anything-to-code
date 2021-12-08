@@ -24,12 +24,32 @@ namespace ConsoleApp
                 //PropertiesExample();
                 //OperatorOverloadingExample();
                 //IndexerExample();
-                StaticAndNonStaticExample();
+                //StaticAndNonStaticExample();
+                InheritanceExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void InheritanceExample()
+        {
+            LivingThings l1 = new LivingThings();
+            Animal a1 = new Animal("animal");
+            a1 = new Animal();
+            //Plant p1 = new Plant();
+            //Apes apes = new Apes();
+            //Human h1 = new Human();
+            //Man m1 = new Man();
+            //Woman w1 = new Woman();
+            l1.Eat();
+            a1.Eat();
+            //p1.Eat();
+            //apes.Eat();
+            //h1.Eat();
+            //m1.Eat();
+            //w1.Eat();
         }
 
         private static void ConstReadonlyExample()
