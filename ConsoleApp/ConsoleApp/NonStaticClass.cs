@@ -14,8 +14,8 @@ namespace ConsoleApp
 
     public class NonStaticClass
     {
-        public static int StaticInt;
-        public int I;
+        public static int StaticInt = 0;
+        public int I = 0;
         public string Name { get; set; }
 
         public void SomeFunction()

@@ -32,6 +32,11 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
+        private static void ConstReadonlyExample()
+        {
+            Test t1 = new Test();
+        }
+
         private static void StaticAndNonStaticExample()
         {
             //StaticClass staticClass = new StaticClass(); //not valid
@@ -40,7 +45,6 @@ namespace ConsoleApp
             StaticClass.SomeFunction();
 
             NonStaticClass nonStatic = new NonStaticClass();
-
             nonStatic.I = 10;
             //nonStatic.Name = "Some Name";
             //nonStatic.SomeFunction();
