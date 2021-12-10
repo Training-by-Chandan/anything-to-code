@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using ConsoleApp.Extension;
 
 namespace ConsoleApp
 {
@@ -26,12 +27,34 @@ namespace ConsoleApp
                 //IndexerExample();
                 //StaticAndNonStaticExample();
                 //InheritanceExample();
-                PolymorphismExample();
+                //PolymorphismExample();
+                //ExtensionExample();
+                ComplexModel();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void ComplexModel()
+        {
+            var data = StudentData.GenerateDummyData();
+            Console.WriteLine(data.ToString());
+        }
+
+        private static void ExtensionExample()
+        {
+            int i = 10;
+            Console.WriteLine(i.IsNonZero());
+            Guid id = Guid.Empty;
+            Console.WriteLine(id);
+
+            Console.WriteLine("Enter the name");
+            string str = Console.ReadLine();
+            str.IsValid();
+            var newStr = str.AddSpace(10, "alpha");
+            Console.WriteLine(newStr);
         }
 
         private static void PolymorphismExample()
@@ -79,7 +102,7 @@ namespace ConsoleApp
             StaticClass.I = 10;
             StaticClass.Name = "Chandan";
             StaticClass.SomeFunction();
-
+            StaticClass.Name.IsValid();
             NonStaticClass nonStatic = new NonStaticClass();
             nonStatic.I = 10;
             //nonStatic.Name = "Some Name";
