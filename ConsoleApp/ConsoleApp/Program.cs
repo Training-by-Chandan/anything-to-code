@@ -25,12 +25,28 @@ namespace ConsoleApp
                 //OperatorOverloadingExample();
                 //IndexerExample();
                 //StaticAndNonStaticExample();
-                InheritanceExample();
+                //InheritanceExample();
+                PolymorphismExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void PolymorphismExample()
+        {
+            LivingThings l1 = new LivingThings();
+            LivingThings a1 = new Animal();
+            LivingThings p1 = new Plant();
+            l1.Move();
+            a1.Move();
+            p1.Move();
+            LivingThings apes = new Apes();
+            apes.Move();
+            //  Console.WriteLine(apes.ToString());
+            Marks m1 = new Marks(100, 50, 20);
+            Console.WriteLine(m1.ToString());
         }
 
         private static void InheritanceExample()

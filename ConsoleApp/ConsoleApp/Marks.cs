@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace ConsoleApp
 {
@@ -78,6 +79,11 @@ namespace ConsoleApp
                 else
                     return "Failed";
             }
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         public static Marks operator +(Marks m1, Marks m2) => new Marks(m1.Math + m2.Math, m1.Science + m2.Science, m1.English + m2.English);

@@ -20,6 +20,11 @@ namespace ConsoleApp
         {
             Console.WriteLine($"{name} can eat");
         }
+
+        public virtual void Move()
+        {
+            Console.WriteLine("Living things may or may not move");
+        }
     }
 
     public class Animal : LivingThings
@@ -34,10 +39,19 @@ namespace ConsoleApp
             this.name = name;
         }
 
-        public void AnimalEat()
+        public void Eat()
         {
-            base.Eat();
         }
+
+        public override void Move()
+        {
+            Console.WriteLine("Animal can move");
+        }
+
+        //public void AnimalEat()
+        //{
+        //    base.Eat();
+        //}
     }
 
     public class Plant : LivingThings
@@ -46,12 +60,27 @@ namespace ConsoleApp
         {
             this.name = "Plant";
         }
+
+        public void Move()
+        {
+            Console.WriteLine("Plant cannot move");
+        }
     }
 
     public class Apes : Animal
     {
         public Apes()
         {
+        }
+
+        public void Move()
+        {
+            Console.WriteLine("Apes can move");
+        }
+
+        public override string ToString()
+        {
+            return "I am apes and I am evolving";
         }
     }
 
@@ -62,7 +91,7 @@ namespace ConsoleApp
         }
     }
 
-    public class Man : Human
+    public sealed class Man : Human
     {
         public Man()
         {
@@ -72,6 +101,13 @@ namespace ConsoleApp
     public class Woman : Human
     {
         public Woman()
+        {
+        }
+    }
+
+    public class SomeAnimal : Animal
+    {
+        public void SomeFunction()
         {
         }
     }

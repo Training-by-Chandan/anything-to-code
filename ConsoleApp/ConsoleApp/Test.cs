@@ -22,5 +22,10 @@
             //PI = 3f;
             _piProp = 3f;
         }
+
+        public override string ToString()
+        {
+            return "i am from test class";
+        }
     }
 }
