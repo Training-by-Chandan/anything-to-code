@@ -29,12 +29,62 @@ namespace ConsoleApp
                 //InheritanceExample();
                 //PolymorphismExample();
                 //ExtensionExample();
-                ComplexModel();
+                //ComplexModel();
+                //ShapesImplementation();
+                InterfaceExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static IShape s;
+
+        private static void InterfaceExample()
+        {
+            var chandan = new Chandan();
+            var bibhas = new Bibhas();
+            var sita = new Sita();
+            ISOn s = bibhas;
+            s = chandan;
+            ITeacher t = sita;
+            t = chandan;
+
+            List<ITeacher> teachers = new List<ITeacher>();
+            teachers.Add(chandan);
+            teachers.Add(sita);
+
+            if (sita as ISOn != null)
+            {
+                Console.WriteLine("son");
+            }
+            else
+            {
+                Console.WriteLine("Not son");
+            }
+        }
+
+        private static void ShapesImplementation()
+        {
+            s = GetInputOfShapes();
+
+            s.GetInput();
+            s.Area();
+            s.Perimeter();
+        }
+
+        private static IShape GetInputOfShapes()
+        {
+            Console.WriteLine("Enter the choice\n1 for Square\n2 for Rectangle");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            if (choice == 2)
+                return new Rectangle();
+            else if (choice == 3)
+                return new Circle();
+            else
+                return new Square();
         }
 
         private static void ComplexModel()
