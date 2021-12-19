@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractClass.cs" />
     <Compile Include="HumanBeing.cs" />
     <Compile Include="Inheritance.cs" />
     <Compile Include="Interfaces.cs" />

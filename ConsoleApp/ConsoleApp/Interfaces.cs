@@ -57,11 +57,17 @@ namespace ConsoleApp
         {
             Console.WriteLine("Enter the length");
             _length = Convert.ToDouble(Console.ReadLine());
+            Test();
         }
 
         public void Area()
         {
             Console.WriteLine($"Area => {Math.Pow(_length, 2)}");
+        }
+
+        public void Test()
+        {
+            Console.WriteLine("I am from test class");
         }
 
         public void Perimeter()

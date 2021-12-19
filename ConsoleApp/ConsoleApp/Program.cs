@@ -39,6 +39,28 @@ namespace ConsoleApp
             Console.ReadLine();
         }
 
+        private static ShapeAbs shape;
+
+        private static void AbstractClassExample()
+        {
+            //ShapeAbs shapeAbs = new ShapeAbs(); // cannot create object
+            shape = GetInputOfShapesAbs();
+            shape.GetInput();
+            shape.Area();
+            shape.Perimeter();
+        }
+
+        private static ShapeAbs GetInputOfShapesAbs()
+        {
+            Console.WriteLine("Enter the choice\n1 for Square\n2 for Rectangle");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            if (choice == 2)
+                return new RectangleAbs();
+            else
+                return new SquareAbs();
+        }
+
         private static IShape s;
 
         private static void InterfaceExample()
