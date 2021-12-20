@@ -31,12 +31,75 @@ namespace ConsoleApp
                 //ExtensionExample();
                 //ComplexModel();
                 //ShapesImplementation();
-                InterfaceExample();
+                //InterfaceExample();
+                //CustomStackImplementation();
+                CustomStackImplementationV2();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void TemplatedCustomStackImplementation()
+        {
+            CustomStackV2Templated<int> csInt = new CustomStackV2Templated<int>();
+            csInt.Push(10);
+            CustomStackV2Templated<string> csString = new CustomStackV2Templated<string>();
+            csString.Push("Bibash");
+        }
+
+        private static void CustomStackImplementationV2()
+        {
+            CustomStackV2 cs = new CustomStackV2();
+            cs.Push(10);
+            cs.Push(4);
+            Console.WriteLine("After pushing 2 items");
+            cs.DisplayAll();
+            cs.Pop();
+            Console.WriteLine("After popping 1 item");
+            cs.DisplayAll();
+            cs.Push(20);
+            cs.Push(24);
+            cs.Push(23);
+            cs.Push(54);
+            cs.Push(45);
+            cs.Push(20);
+            cs.Push(24);
+            cs.Push(23);
+            cs.Push(54);
+            cs.Push(45);
+            cs.Push(20);
+            cs.Push(24);
+            cs.Push(23);
+            cs.Push(54);
+            cs.Push(45);
+            cs.Push(20);
+            cs.Push(24);
+            cs.Push(23);
+            cs.Push(54);
+            cs.Push(45);
+            Console.WriteLine("After pushing 5 items");
+            cs.DisplayAll();
+        }
+
+        private static void CustomStackImplementation()
+        {
+            CustomStack cs = new CustomStack(10);
+            cs.Push(10);
+            cs.Push(4);
+            Console.WriteLine("After pushing 2 items");
+            cs.DisplayAll();
+            cs.Pop();
+            Console.WriteLine("After popping 1 item");
+            cs.DisplayAll();
+            cs.Push(20);
+            cs.Push(24);
+            cs.Push(23);
+            cs.Push(54);
+            cs.Push(45);
+            Console.WriteLine("After pushing 5 items");
+            cs.DisplayAll();
         }
 
         private static ShapeAbs shape;
