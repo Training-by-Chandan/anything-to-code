@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
+    <Compile Include="CustomQueue.cs" />
     <Compile Include="CustomStack.cs" />
     <Compile Include="HumanBeing.cs" />
     <Compile Include="Inheritance.cs" />

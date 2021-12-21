@@ -33,12 +33,34 @@ namespace ConsoleApp
                 //ShapesImplementation();
                 //InterfaceExample();
                 //CustomStackImplementation();
-                CustomStackImplementationV2();
+                //CustomStackImplementationV2();
+                CustomQueueImplementation();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void CustomQueueImplementation()
+        {
+            CustomQueue cq = new CustomQueue();
+            cq.Enqueue(10);
+            cq.Enqueue(15);
+            cq.Enqueue(20);
+            cq.Enqueue(25);
+            Console.WriteLine("After enqueuing 4 items");
+            cq.DisplayAll();
+            cq.Dequeue();
+            Console.WriteLine("After dequeuing 1 item");
+            cq.DisplayAll();
+            cq.Enqueue(30);
+            cq.Enqueue(35);
+            Console.WriteLine("After enqueuing 2 items");
+            cq.DisplayAll();
+            cq.Dequeue();
+            Console.WriteLine("After dequeuing 1 item");
+            cq.DisplayAll();
         }
 
         private static void TemplatedCustomStackImplementation()
