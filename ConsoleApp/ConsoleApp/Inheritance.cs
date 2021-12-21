@@ -2,7 +2,7 @@
 
 namespace ConsoleApp
 {
-    public class LivingThings
+    public class LivingThings : IShapeLiving
     {
         protected string name { get; set; }
 

@@ -2,6 +2,10 @@
 
 namespace ConsoleApp
 {
+    public interface IShapeLiving
+    {
+    }
+
     public interface ISOn
     {
     }
@@ -45,7 +49,7 @@ namespace ConsoleApp
         void GetInput();
     }
 
-    public interface IShape : IArea, IPerimeter, IGetInput
+    public interface IShape : IArea, IPerimeter, IGetInput, IShapeLiving
     {
     }
 

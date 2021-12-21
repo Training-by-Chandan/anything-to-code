@@ -34,12 +34,21 @@ namespace ConsoleApp
                 //InterfaceExample();
                 //CustomStackImplementation();
                 //CustomStackImplementationV2();
-                CustomQueueImplementation();
+                //CustomQueueImplementation();
+                TemplateImplemenation();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void TemplateImplemenation()
+        {
+            var template = new TemplateOne<Apes, Apes>();
+            template.DisplayType();
+            //template.GetInput()
+            NonTemplatedClass.TemplatedFunction<Square, Man>(new Square(), new Man());
         }
 
         private static void CustomQueueImplementation()
