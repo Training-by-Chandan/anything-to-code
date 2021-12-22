@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using ConsoleApp.Extension;
+using System.Collections;
 
 namespace ConsoleApp
 {
@@ -35,12 +36,75 @@ namespace ConsoleApp
                 //CustomStackImplementation();
                 //CustomStackImplementationV2();
                 //CustomQueueImplementation();
-                TemplateImplemenation();
+                //TemplateImplemenation();
+                //CollectionExamples();
+                LinqExamples();
+
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void LinqExamples()
+        {
+            List<string> list = new List<string>();
+            list.Add("January");
+            list.Add("February");
+            list.Add("March");
+            list.Add("April");
+            list.Add("May");
+            list.Add("June");
+            list.Add("July");
+            list.Add("August");
+            list.Add("September");
+            list.Add("October");
+            list.Add("November");
+            list.Add("December");
+
+            var newList = (
+                from l in list select l.Substring(0, 3)
+                ).ToList();
+            var listNew = list.Where(x => x.StartsWith("J")).Select(l => l.Substring(0, 3)).ToList();
+
+            var groupedData = list.GroupBy(p => p.Substring(0, 1));
+
+            foreach (var item in listNew)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private static void CollectionExamples()
+        {
+            //int i = 10;
+            //object obj = i;
+            //obj = "";
+            //object[] a = new object[5];
+            //a[0] = "";
+            //a[1] = 10;
+
+            ArrayList al = new ArrayList();
+            al.Add(10);
+            al.Add("Chandan");
+            al.Add(new LivingThings());
+            var t = al[1];
+
+            SortedList l = new SortedList();
+            l.Add(2, "Chandan");
+            l.Add(1, "Chandan");
+            l.Add(-1, "Chandan");
+
+            List<int> intList = new List<int>();
+            intList.Add(10);
+            intList.Add(20);
+            intList.Add(30);
+            intList.Add(20);
+            intList.Add(50);
+            intList.Add(20);
+
+            Dictionary<int, string> dict = new Dictionary<int, string>();
         }
 
         private static void TemplateImplemenation()
