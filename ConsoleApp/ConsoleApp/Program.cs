@@ -38,13 +38,35 @@ namespace ConsoleApp
                 //CustomQueueImplementation();
                 //TemplateImplemenation();
                 //CollectionExamples();
-                LinqExamples();
+                //LinqExamples();
+                LinqExampleV2();
 
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void LinqExampleV2()
+        {
+            var data = StudentData.GenerateDummyData();
+            var total = data.Subjects.Sum(p => p.Marks);
+
+            //Console.WriteLine(total);
+            var list1 = StudentData.GenerateDummySubjects();
+            var list2 = StudentData.GenerateDummySubjectsV2();
+
+            var newList = (
+                from l1 in list1 join l2 in list2 on l1.Name equals l2.Name select new SubjectModelNew { Name = l1.Name, Exam1 = l1.Marks, Exam2 = l2.Marks }
+                ).ToList();
+            var lists = list1.Skip(2).Take(3);
+            //var listnew=list1.Join(list2,p=>p.Name,x=>x.Name,y=>new SubjectModelNew { Name= p })
+
+            foreach (var item in newList)
+            {
+                Console.WriteLine($"Subject : {item.Name}\tExam1 : {item.Exam1}\tExam2 : {item.Exam2}");
+            }
         }
 
         private static void LinqExamples()

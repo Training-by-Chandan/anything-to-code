@@ -38,6 +38,13 @@ namespace ConsoleApp
         public float Marks { get; set; }
     }
 
+    public class SubjectModelNew
+    {
+        public string Name { get; set; }
+        public float Exam1 { get; set; }
+        public float Exam2 { get; set; }
+    }
+
     public static class StudentData
     {
         public static StudentModel GenerateDummyData()
@@ -58,6 +65,28 @@ namespace ConsoleApp
             st.Claases.Add(new Claases { Name = "Class 6", Year = 2005 });
             st.Claases.Add(new Claases { Name = "Class 7", Year = 2006 });
             return st;
+        }
+
+        public static List<SubjectModel> GenerateDummySubjects()
+        {
+            return new List<SubjectModel>() {
+            new SubjectModel(){ Name="English", Marks=20 },
+            new SubjectModel(){ Name="Nepali", Marks=20 },
+            new SubjectModel(){ Name="Science", Marks=20 },
+            new SubjectModel(){ Name="Computer", Marks=20 },
+            new SubjectModel(){ Name="Math", Marks=20 },
+            };
+        }
+
+        public static List<SubjectModel> GenerateDummySubjectsV2()
+        {
+            return new List<SubjectModel>() {
+            new SubjectModel(){ Name="English", Marks=30 },
+            new SubjectModel(){ Name="Nepali", Marks=30 },
+            new SubjectModel(){ Name="Science", Marks=30 },
+            new SubjectModel(){ Name="Computer", Marks=30 },
+            new SubjectModel(){ Name="Math", Marks=30 },
+            };
         }
     }
 }
