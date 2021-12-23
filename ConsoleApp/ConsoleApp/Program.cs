@@ -39,13 +39,28 @@ namespace ConsoleApp
                 //TemplateImplemenation();
                 //CollectionExamples();
                 //LinqExamples();
-                LinqExampleV2();
+                //LinqExampleV2();
+                PassByExamples();
 
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void PassByExamples()
+        {
+            int a = 10;
+            int b = 20;
+            Console.WriteLine($"a = {a}, b = {b}");
+            PassBy.Increase(a, b);
+            Console.WriteLine($"a = {a}, b = {b}");
+            PassBy.Increase(ref a, ref b);
+            PassBy.Increase(ref a, ref b);
+            Console.WriteLine($"a = {a}, b = {b}");
+            int x = 0;
+            PassBy.Increase(a, b, out x);
         }
 
         private static void LinqExampleV2()
