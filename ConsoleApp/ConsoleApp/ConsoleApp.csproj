@@ -50,6 +50,7 @@
     <Compile Include="CustomList.cs" />
     <Compile Include="CustomQueue.cs" />
     <Compile Include="CustomStack.cs" />
+    <Compile Include="Delegs.cs" />
     <Compile Include="HumanBeing.cs" />
     <Compile Include="Inheritance.cs" />
     <Compile Include="Interfaces.cs" />

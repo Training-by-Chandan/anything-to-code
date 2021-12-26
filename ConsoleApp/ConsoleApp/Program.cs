@@ -40,13 +40,27 @@ namespace ConsoleApp
                 //CollectionExamples();
                 //LinqExamples();
                 //LinqExampleV2();
-                PassByExamples();
-
+                //PassByExamples();
+                DelegateExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void FunctionToRun(int x, int y)
+        {
+            Console.WriteLine("I am running externally");
+        }
+
+        private static void DelegateExample()
+        {
+            Delegs d1 = new Delegs();
+            d1.MathEvent += FunctionToRun;
+            d1.Implementation();
+            d1.MathEvent -= FunctionToRun;
+            d1.Implementation();
         }
 
         private static void PassByExamples()
