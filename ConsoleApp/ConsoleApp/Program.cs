@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using ConsoleApp.Extension;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -41,12 +42,93 @@ namespace ConsoleApp
                 //LinqExamples();
                 //LinqExampleV2();
                 //PassByExamples();
-                DelegateExample();
+                //DelegateExample();
+                MultiThreadedExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static async void MultiThreadedExample()
+        {
+            TaskTwo();
+            //Thread t1 = new Thread(FunctionA);
+            //Thread t2 = new Thread(()=> {
+            //});
+            //t1.Start();
+            //t2.Start();
+            ct = new CancellationTokenSource();
+            Task taskOne = new Task(() =>
+           {
+               TaskOne();
+           }, ct.Token);
+
+            //Task taskTwo = new Task(() =>
+            //{
+            //    TaskTwo();
+            //}, ct.Token);
+
+            //  taskOne.ContinueWith(async a => { await TaskTwo(); }, TaskContinuationOptions.OnlyOnCanceled);
+            //  taskTwo.Start();
+            // taskOne.Start().;
+            //Task.Factory.StartNew(async () =>
+            //{
+            //    await TaskOne();
+            //}, ct.Token)
+            //    .ContinueWith(async p => { await TaskTwo(); }, ct.Token, TaskContinuationOptions., TaskScheduler.Current);
+            var task = await TaskOne();
+
+            ct.CancelAfter(5000);
+        }
+
+        private static CancellationTokenSource ct = new CancellationTokenSource();
+
+        public static async Task<int> TaskOne()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                if (ct.IsCancellationRequested)
+                {
+                    break;
+                }
+                Console.WriteLine($"{DateTime.Now } => Task One =>{i}");
+                await Task.Delay(500);
+            }
+
+            return 0;
+        }
+
+        public static async Task<int> TaskTwo()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                //  ct.Token.ThrowIfCancellationRequested();
+
+                Console.WriteLine($"{DateTime.Now } => Task Two =>{i}");
+                // await Task.Delay(1500);
+            }
+
+            return 1;
+        }
+
+        private static void FunctionA()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Console.WriteLine($"{DateTime.Now } => Function A =>{i}");
+                Thread.Sleep(500);
+            }
+        }
+
+        private static void FunctionB()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"{DateTime.Now } => Function B =>{i}");
+                Thread.Sleep(1500);
+            }
         }
 
         private static void FunctionToRun(int x, int y)
