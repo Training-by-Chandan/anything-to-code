@@ -7,6 +7,7 @@ using System.Threading;
 using ConsoleApp.Extension;
 using System.Collections;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleApp
 {
@@ -43,12 +44,66 @@ namespace ConsoleApp
                 //LinqExampleV2();
                 //PassByExamples();
                 //DelegateExample();
-                MultiThreadedExample();
+                //MultiThreadedExample();
+                FileIOExample();
                 Console.Write("Do you want to continue more (y/n)? ");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
 
             Console.ReadLine();
+        }
+
+        private static void FileIOExample()
+        {
+            string FileName = "D:\\Projects\\Broadway\\430PM_Broadway\\ConsoleApp\\ConsoleApp.sln";
+            //var file = File.ReadAllText(FileName);
+            //Console.WriteLine(file);
+            //Console.WriteLine("Enter any text");
+            //var str = Console.ReadLine();
+            //// File.AppendAllText(FileName, str);
+
+            //var writeStream = new FileStream(FileName, FileMode.Append, FileAccess.Write);
+            //var strBytes = System.Text.Encoding.ASCII.GetBytes(str);
+            //writeStream.Write(strBytes, 0, strBytes.Length);
+            //writeStream.Flush();
+            //writeStream.Close();
+
+            var dirName = "D:\\";
+            var dirInfo = new DirectoryInfo(dirName);
+            foreach (var item in dirInfo.GetDirectories())
+            {
+                Console.WriteLine($"{item.Name}\t{item.CreationTime.ToString("MM_dd_yyyy")}\t{item.Attributes}");
+            }
+            foreach (var item in dirInfo.GetFiles())
+            {
+                Console.WriteLine($"{item.Name}\t{item.CreationTime.ToString("MM_dd_yyyy")}\t{item.Attributes}\t{item.Length} bytes");
+            }
+
+            //  var path = Path.GetDirectoryName(FileName);
+            Console.WriteLine($"Directory => {Path.GetDirectoryName(FileName)}");
+            Console.WriteLine($"File => {Path.GetFileName(FileName)}");
+            Console.WriteLine($"Extension => {Path.GetExtension(FileName)}");
+
+            var tempFolder = Path.GetTempPath();
+            var folder = Path.Combine(tempFolder, "abc");
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+            var file = Path.Combine(folder, "abc.txt");
+            if (!File.Exists(file))
+            {
+                File.Create(file);
+            }
+            File.WriteAllText(file, "This is our content");
+            var picture = "C:\\Users\\Chand\\Pictures\\Network.jpg";
+            var destination = "D:\\Copied";
+            if (!Directory.Exists(destination))
+            {
+                Directory.CreateDirectory(destination);
+            }
+            var destFile = Path.Combine(destination, Path.GetFileName(picture));
+            File.Copy(picture, destFile);
         }
 
         private static async void MultiThreadedExample()
