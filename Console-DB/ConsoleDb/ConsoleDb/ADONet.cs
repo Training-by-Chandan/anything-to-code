@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace ConsoleDb
 {
     public class ADONet
     {
-        static string conStr = "Data Source=DESKTOP-PT71T7O\\SQLCHANDAN;Initial Catalog=Console;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string conStr = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         public static void ReadConsoleTable()
         {
             //create the sql connection object
