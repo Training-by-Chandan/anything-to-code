@@ -12,6 +12,8 @@ namespace ConsoleDb.ORM.DbFirst
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ConsoleEntities : DbContext
     {
@@ -27,5 +29,14 @@ namespace ConsoleDb.ORM.DbFirst
     
         public virtual DbSet<Info> Infoes { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+    
+        public virtual ObjectResult<sp_listall_Result> sp_listall(string firstname)
+        {
+            var firstnameParameter = firstname != null ?
+                new ObjectParameter("firstname", firstname) :
+                new ObjectParameter("firstname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_listall_Result>("sp_listall", firstnameParameter);
+        }
     }
 }

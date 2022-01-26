@@ -80,6 +80,9 @@
     <Compile Include="ORM\DbFirst\OrderDetail.cs">
       <DependentUpon>ConsoleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ORM\DbFirst\sp_listall_Result.cs">
+      <DependentUpon>ConsoleModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -28,7 +28,9 @@
           <Property Name="Price" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <Association Name="Info_key">
-          <End Role="Info" Type="Self.Info" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Info">
@@ -39,6 +41,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_listall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="firstname" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="ConsoleModelStoreContainer">
           <EntitySet Name="Info" EntityType="Self.Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
@@ -71,6 +76,9 @@
             <End Role="Info" EntitySet="Infoes" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
+          <FunctionImport Name="sp_listall" ReturnType="Collection(ConsoleModel.sp_listall_Result)">
+            <Parameter Name="firstname" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="OrderDetail">
           <Key>
@@ -95,6 +103,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_listall_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -125,6 +141,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_listall" FunctionName="ConsoleModel.Store.sp_listall">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConsoleModel.sp_listall_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
