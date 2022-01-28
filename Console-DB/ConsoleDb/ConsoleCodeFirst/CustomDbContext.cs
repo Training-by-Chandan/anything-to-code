@@ -7,9 +7,10 @@ namespace ConsoleCodeFirst
     {
         public CustomDbContext() : base("name=Default")
         {
-
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Classes> Classes { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
     }
 }

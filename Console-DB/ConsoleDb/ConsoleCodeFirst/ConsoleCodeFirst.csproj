@@ -66,8 +66,30 @@
     <Compile Include="Migrations\202201261155239_removedAge.designer.cs">
       <DependentUpon>202201261155239_removedAge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201281107302_attributesAdded.cs" />
+    <Compile Include="Migrations\202201281107302_attributesAdded.designer.cs">
+      <DependentUpon>202201281107302_attributesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201281115026_AddedClasses.cs" />
+    <Compile Include="Migrations\202201281115026_AddedClasses.designer.cs">
+      <DependentUpon>202201281115026_AddedClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201281121264_AddedTeachers.cs" />
+    <Compile Include="Migrations\202201281121264_AddedTeachers.designer.cs">
+      <DependentUpon>202201281121264_AddedTeachers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201281202198_createView.cs" />
+    <Compile Include="Migrations\202201281202198_createView.designer.cs">
+      <DependentUpon>202201281202198_createView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201281209303_createView1.cs" />
+    <Compile Include="Migrations\202201281209303_createView1.designer.cs">
+      <DependentUpon>202201281209303_createView1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\Teacher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +106,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201261155239_removedAge.resx">
       <DependentUpon>202201261155239_removedAge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201281107302_attributesAdded.resx">
+      <DependentUpon>202201281107302_attributesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201281115026_AddedClasses.resx">
+      <DependentUpon>202201281115026_AddedClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201281121264_AddedTeachers.resx">
+      <DependentUpon>202201281121264_AddedTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201281202198_createView.resx">
+      <DependentUpon>202201281202198_createView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201281209303_createView1.resx">
+      <DependentUpon>202201281209303_createView1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
