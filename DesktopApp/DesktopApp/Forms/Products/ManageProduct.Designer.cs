@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.quantityTxt = new System.Windows.Forms.TextBox();
@@ -41,7 +44,13 @@
             this.clearBtn = new System.Windows.Forms.Button();
             this.productGrid = new System.Windows.Forms.DataGridView();
             this.unitCombo = new System.Windows.Forms.ComboBox();
+            this.editBtn = new System.Windows.Forms.Button();
+            this.lblSelectedId = new System.Windows.Forms.Label();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.productGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,7 +138,7 @@
             // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(357, 338);
+            this.clearBtn.Location = new System.Drawing.Point(365, 338);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(105, 56);
             this.clearBtn.TabIndex = 11;
@@ -140,8 +149,10 @@
             // productGrid
             // 
             this.productGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productGrid.Location = new System.Drawing.Point(55, 428);
+            this.productGrid.Location = new System.Drawing.Point(47, 519);
+            this.productGrid.MultiSelect = false;
             this.productGrid.Name = "productGrid";
+            this.productGrid.ReadOnly = true;
             this.productGrid.Size = new System.Drawing.Size(568, 192);
             this.productGrid.TabIndex = 12;
             // 
@@ -161,11 +172,67 @@
             this.unitCombo.Size = new System.Drawing.Size(397, 33);
             this.unitCombo.TabIndex = 13;
             // 
+            // editBtn
+            // 
+            this.editBtn.Location = new System.Drawing.Point(510, 338);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(105, 56);
+            this.editBtn.TabIndex = 14;
+            this.editBtn.Text = "Edit";
+            this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.Visible = false;
+            // 
+            // lblSelectedId
+            // 
+            this.lblSelectedId.AutoSize = true;
+            this.lblSelectedId.Location = new System.Drawing.Point(45, 338);
+            this.lblSelectedId.Name = "lblSelectedId";
+            this.lblSelectedId.Size = new System.Drawing.Size(0, 25);
+            this.lblSelectedId.TabIndex = 15;
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(365, 338);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(105, 56);
+            this.deleteBtn.TabIndex = 16;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Visible = false;
+            // 
+            // searchTxt
+            // 
+            this.searchTxt.Location = new System.Drawing.Point(413, 462);
+            this.searchTxt.Name = "searchTxt";
+            this.searchTxt.Size = new System.Drawing.Size(202, 30);
+            this.searchTxt.TabIndex = 17;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(641, 80);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Records";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(339, 300);
+            this.chart1.TabIndex = 18;
+            this.chart1.Text = "chart1";
+            // 
             // ManageProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 723);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.searchTxt);
+            this.Controls.Add(this.deleteBtn);
+            this.Controls.Add(this.lblSelectedId);
+            this.Controls.Add(this.editBtn);
             this.Controls.Add(this.unitCombo);
             this.Controls.Add(this.productGrid);
             this.Controls.Add(this.clearBtn);
@@ -185,6 +252,7 @@
             this.Text = "ManageProduct";
             this.Load += new System.EventHandler(this.ManageProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +273,10 @@
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.DataGridView productGrid;
         private System.Windows.Forms.ComboBox unitCombo;
+        private System.Windows.Forms.Button editBtn;
+        private System.Windows.Forms.Label lblSelectedId;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
