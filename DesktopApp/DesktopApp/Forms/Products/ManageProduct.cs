@@ -1,5 +1,5 @@
-﻿using DesktopApp.Models;
-using DesktopApp.Service;
+﻿using DesktopApp.Service;
+using DesktopApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +14,12 @@ namespace DesktopApp.Forms.Products
 {
     public partial class ManageProduct : Form
     {
+        private readonly ProductService productService;
+
         public ManageProduct()
         {
+            productService = new ProductService();
+
             InitializeComponent();
             productGrid.SelectionChanged += ProductGrid_SelectionChanged;
             editBtn.Click += EditBtn_Click;
@@ -33,7 +37,7 @@ namespace DesktopApp.Forms.Products
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            var result = ProductService.Delete(Convert.ToInt32(lblSelectedId.Text));
+            var result = productService.Delete(Convert.ToInt32(lblSelectedId.Text));
             if (result.Item1)
             {
                 ShowAllData();
@@ -47,7 +51,7 @@ namespace DesktopApp.Forms.Products
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            var product = new Product()
+            var product = new ProductViewModel()
             {
                 Id = Convert.ToInt32(lblSelectedId.Text),
                 Name = nameTxt.Text,
@@ -56,7 +60,7 @@ namespace DesktopApp.Forms.Products
                 Quantity = Convert.ToInt32(quantityTxt.Text),
                 Unit = unitCombo.SelectedItem.ToString(),
             };
-            var result = ProductService.Edit(product);
+            var result = productService.Edit(product);
             if (result.Item1)
             {
                 ShowAllData();
@@ -105,7 +109,7 @@ namespace DesktopApp.Forms.Products
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            var product = new Product()
+            var product = new ProductViewModel()
             {
                 Name = nameTxt.Text,
                 Code = codeTxt.Text,
@@ -113,7 +117,7 @@ namespace DesktopApp.Forms.Products
                 Quantity = Convert.ToInt32(quantityTxt.Text),
                 Unit = unitCombo.SelectedItem.ToString(),
             };
-            var result = ProductService.Create(product);
+            var result = productService.Create(product);
             if (result.Item1)
             {
                 ShowAllData();
@@ -132,14 +136,14 @@ namespace DesktopApp.Forms.Products
 
         private void ShowAllData(string querydata = "")
         {
-            var data = ProductService.GetAll(querydata);
+            var data = productService.GetAll(querydata);
             productGrid.DataSource = data.ToList();
             productGrid.Refresh();
 
             GenerateChart(data);
         }
 
-        private void GenerateChart(List<Product> data)
+        private void GenerateChart(List<ProductViewModel> data)
         {
             chart1.DataSource = data.ToList();
             chart1.Series["Records"].Points.Clear();

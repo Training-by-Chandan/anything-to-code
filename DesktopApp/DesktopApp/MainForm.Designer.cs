@@ -31,9 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seeStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,24 +65,24 @@
             this.productToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.productToolStripMenuItem.Text = "Product";
             // 
-            // ordersToolStripMenuItem
-            // 
-            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.ordersToolStripMenuItem.Text = "Orders";
-            // 
             // manageProductToolStripMenuItem
             // 
             this.manageProductToolStripMenuItem.Name = "manageProductToolStripMenuItem";
-            this.manageProductToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageProductToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.manageProductToolStripMenuItem.Text = "Manage Product";
             this.manageProductToolStripMenuItem.Click += new System.EventHandler(this.manageProductToolStripMenuItem_Click);
             // 
             // seeStocksToolStripMenuItem
             // 
             this.seeStocksToolStripMenuItem.Name = "seeStocksToolStripMenuItem";
-            this.seeStocksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.seeStocksToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.seeStocksToolStripMenuItem.Text = "See Stocks";
+            // 
+            // ordersToolStripMenuItem
+            // 
+            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.ordersToolStripMenuItem.Text = "Orders";
             // 
             // MainForm
             // 
@@ -94,6 +94,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

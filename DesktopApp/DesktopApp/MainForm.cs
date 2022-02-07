@@ -1,4 +1,5 @@
-﻿using DesktopApp.Forms.Products;
+﻿using DesktopApp.Forms;
+using DesktopApp.Forms.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,11 @@ namespace DesktopApp
             ManageProduct mp = new ManageProduct();
             mp.MdiParent = this;
             mp.Show();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //menuStrip1.Enabled = false;
         }
     }
 }

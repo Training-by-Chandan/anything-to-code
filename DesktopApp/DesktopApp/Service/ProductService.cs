@@ -1,4 +1,6 @@
 ﻿using DesktopApp.Models;
+using DesktopApp.Repository;
+using DesktopApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,75 +9,68 @@ using System.Threading.Tasks;
 
 namespace DesktopApp.Service
 {
-    public static class ProductService
+    public class ProductService
     {
-        public static InventoryContext db = new InventoryContext();
+        private readonly EmailService emailService;
 
-        public static List<Product> GetAll(string query = "")
+        public ProductService()
         {
-            var data = db.Products.AsEnumerable();
-            if (!string.IsNullOrWhiteSpace(query))
-            {
-                query = query.Trim().ToLower();
-                data = data.Where(p => p.Name.ToLower().Contains(query) || p.Code.ToLower().Contains(query));
-            }
-            return data.ToList();
+            this.emailService = new EmailService();
         }
 
-        public static (bool, string) Create(Product product)
+        public List<ProductViewModel> GetAll(string query = "")
         {
-            try
+            var data = ProductRepository.GetAll(query);
+            if (data != null)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return (true, "Added Successfully");
+                return data.Select(p => new ProductViewModel
+                {
+                    Code = p.Code,
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Quantity = p.Quantity,
+                    Unit = p.Unit
+                }).ToList();
             }
-            catch (Exception ex)
-            {
-                return (false, ex.ToString());
-            }
+            return null;
         }
 
-        public static (bool, string) Edit(Product product)
+        public (bool, string) Create(ProductViewModel model)
         {
-            try
+            var product = new Product()
             {
-                var existin = db.Products.Find(product.Id);
-                if (existin == null) return (false, "Record not found");
-                existin.Name = product.Name;
-                existin.Code = product.Code;
-                existin.Price = product.Price;
-                existin.Unit = product.Unit;
-                existin.Quantity = product.Quantity;
-                db.Entry(existin).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return (true, "Updated Successfully");
-            }
-            catch (Exception ex)
+                Code = model.Code,
+                Name = model.Name,
+                Price = model.Price,
+                Quantity = model.Quantity,
+                Unit = model.Unit
+            };
+            var result = ProductRepository.Create(product);
+            if (result.Item1)
             {
-                return (false, ex.ToString());
+                Task t1 = new Task(() => { emailService.SendEmail(); });
+                t1.Start();
             }
+            return result;
         }
 
-        public static (bool, string) Delete(int id)
+        public (bool, string) Edit(ProductViewModel model)
         {
-            try
+            var product = new Product()
             {
-                var existin = db.Products.Find(id);
-                if (existin == null) return (false, "Record not found");
-                db.Products.Remove(existin);
-                db.SaveChanges();
-                return (true, "Updated Successfully");
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.ToString());
-            }
+                Code = model.Code,
+                Name = model.Name,
+                Price = model.Price,
+                Quantity = model.Quantity,
+                Unit = model.Unit
+            };
+            return ProductRepository.Edit(product);
         }
 
-        public static Product FindById(int id)
+        public (bool, string) Delete(int id)
         {
-            return db.Products.Find(id);
+            return ProductRepository.Delete(id);
         }
     }
 }

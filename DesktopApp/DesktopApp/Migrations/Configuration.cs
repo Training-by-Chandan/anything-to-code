@@ -1,5 +1,6 @@
 ﻿namespace DesktopApp.Migrations
 {
+    using DesktopApp.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -12,12 +13,14 @@
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DesktopApp.Models.InventoryContext context)
+        protected override void Seed(DesktopApp.Models.InventoryContext db)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            var admin = new UserInfo() { Email = "admin@admin.com", Password = "Admin@123", PhoneNumber = "9810315930", Roles = Roles.Admin };
+            if (!db.UserInfo.Any(p => p.Email == admin.Email))
+            {
+                db.UserInfo.Add(admin);
+                db.SaveChanges();
+            }
         }
     }
 }
