@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--styles -->
+  <link href="main.css" rel="stylesheet">
+</head>
+<body>
+   <div>
+       <div id="headingOne">
+           <input type="text" id="inputOne" placeholder="Some text">
+       </div>
+       <button id="clipboardBtn">Check The Clipboard</button>
+       <div>
+              <h2 id="headingText"></h2>
+       </div>
+   </div>
+   <div>
+         <div id="headingTwo">
+              <h1 id="headingTwoText">This is test</h1>
+         </div>
+         <div>
+                  <h2>This is test</h2>
+         </div>
+   </div>
+</body>
+<!--Scripts -->
+<script>
+    //Start();
+    function Start()
+    {
+        alert("Page is loaded");
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {
+        //Start();
+        var inputOne = document.getElementById("inputOne");
+        inputOne.addEventListener("keyup", function(event) {
+            var headingText = document.getElementById("headingText");
+            headingText.innerHTML = inputOne.value;
+        });
+
+       
+        
+    });
+
+    function ClipboardFn()
+    {
+        var clipboardBtn = document.getElementById("clipboardBtn");
+        navigator.clipboard.readText().then(function(text) {
+            var headingTwoText = document.getElementById("headingTwoText");
+            headingTwoText.innerHTML = text;
+        });
+    }
+    clipboardBtn.addEventListener("click", function(event) {
+        var inputOne = document.getElementById("inputOne");
+        navigator.clipboard.writeText(inputOne.value);
+});
+
+    window.addEventListener("keydown", function(event) {
+        console.log(event.code ===  'KeyA' && event.altKey);
+        if (event.code ===  'KeyA' && event.altKey) {
+            ClipboardFn();
+        }
+
+       
+    });
+
+    var arr=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    
+    arr.splice(1,1);
+
+</script>
+</html>
