@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="jquery-ui/jquery-ui.min.css" rel="stylesheet">
+</head>
+<body>
+    <button id="btn">Toggle</button>
+    <div id="someId"></div>
+<br/>
+<br/>
+<br/>
+    <div id="draggable" class="ui-widget-content">
+        <p>Drag me around</p>
+      </div>
+</body>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui/jquery-ui.min.js"></script>
+<script>
+    alert("waiting");
+    $( "#draggable" ).draggable();
+    $("#btn").click(function(){
+        $("#someId").toggle();
+    });
+    $(document).ready(function(){
+        //alert("Page is loaded");
+        $("#someId").text("Page is loaded");
+        $("#someId").append("<br><input type='text' id='inputOne' placeholder='Some text'/><br><input type='button' id='clipboardBtn' value='Submit'/>");
+    });
+    $("#someId").on('click', function(){
+        alert("clicked");
+    });
+    
+</script>
+</html>

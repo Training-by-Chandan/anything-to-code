@@ -1,0 +1,43 @@
+body{
+    background-color: #ffffff;
+    margin: 15%;
+}
+
+button{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+button:hover{
+    background-color: #dddddd;
+    color: #ffffff;
+}
+
+.btn-red{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    color: #ff3333;
+}
+.btn-red:hover{
+    background-color: #ff3333;
+    color: #ffffff;
+}
+
+.btn-blue{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    color: #3369ff;
+}
+.btn-blue:hover{
+    background-color: #3369ff;
+    color: #ffffff;
+}
