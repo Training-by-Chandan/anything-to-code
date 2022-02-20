@@ -1,0 +1,21 @@
+﻿@model WebApp.ViewModels.DisplayBoxViewModel
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+
+    <div class="info-box bg-@Model.BoxType">
+        <span class="info-box-icon"><i class="far fa-@Model.Icon"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">@Model.Title</span>
+            <span class="info-box-number">@Model.Numbers</span>
+
+            <div class="progress">
+                <div class="progress-bar" style="width: @Model.Progress%"></div>
+            </div>
+            <span class="progress-description">
+                @Model.Body
+            </span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+</div>

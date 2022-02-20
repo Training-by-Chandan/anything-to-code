@@ -1,0 +1,13 @@
+﻿@model WebApp.ViewModels.Widget
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="info-box">
+        <span class="info-box-icon bg-@Model.WidgetType"><i class="far fa-@Model.Icon"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">@Model.Title</span>
+            <span class="info-box-number">@Model.Numbers</span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+</div>

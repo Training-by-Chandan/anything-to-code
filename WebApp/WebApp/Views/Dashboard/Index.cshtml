@@ -1,0 +1,30 @@
+﻿@model WebApp.ViewModels.DashboardViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    @if (Model.Widgets != null)
+    {
+        foreach (var item in Model.Widgets)
+        {
+            @Html.Partial("~/Views/PartialComponents/_Widget.cshtml", item)
+        }
+    }
+</div>
+<hr />
+<div class="row">
+    @if (Model.DisplayBoxes != null)
+    {
+        foreach (var item in Model.DisplayBoxes)
+        {
+            @Html.Partial("~/Views/PartialComponents/_PartialDisplayBox.cshtml", item)
+        }
+    }
+    else
+    {
+        <h2>No data found</h2>
+    }
+</div>
