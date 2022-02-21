@@ -169,14 +169,35 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClassController.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202161158244_InitialCreate.cs" />
+    <Compile Include="Migrations\202202161158244_InitialCreate.designer.cs">
+      <DependentUpon>202202161158244_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202211131223_additionalDetails.cs" />
+    <Compile Include="Migrations\202202211131223_additionalDetails.designer.cs">
+      <DependentUpon>202202211131223_additionalDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202211136291_classAdded.cs" />
+    <Compile Include="Migrations\202202211136291_classAdded.designer.cs">
+      <DependentUpon>202202211136291_classAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202211145087_studentAdded.cs" />
+    <Compile Include="Migrations\202202211145087_studentAdded.designer.cs">
+      <DependentUpon>202202211145087_studentAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -199,6 +220,16 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Class\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Class\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Class\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Class\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Class\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2646,6 +2677,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202161158244_InitialCreate.resx">
+      <DependentUpon>202202161158244_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202211131223_additionalDetails.resx">
+      <DependentUpon>202202211131223_additionalDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202211136291_classAdded.resx">
+      <DependentUpon>202202211136291_classAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202211145087_studentAdded.resx">
+      <DependentUpon>202202211145087_studentAdded.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
