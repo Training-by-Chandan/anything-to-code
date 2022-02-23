@@ -198,6 +198,8 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Repository\StudentRepository.cs" />
+    <Compile Include="Services\StudentService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -205,6 +207,8 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="ViewModels\Widget.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -225,11 +229,8 @@
     <Content Include="Areas\Admin\Views\Class\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Class\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Class\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Student\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Student\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Student\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Student\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2662,8 +2663,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Repository\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -25,12 +25,4 @@ namespace WebApp.ViewModels
         public List<DisplayBoxViewModel> DisplayBoxes { get; set; }
        public List<Widget> Widgets { get; set; }
     }
-
-    public class Widget
-    {
-        public string Icon { get; set; }
-        public string WidgetType { get; set; }
-        public string Title { get; set; }
-        public double Numbers { get; set; }
-    }
 }
