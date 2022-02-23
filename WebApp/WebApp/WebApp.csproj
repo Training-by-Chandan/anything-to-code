@@ -172,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\ClassController.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -198,7 +199,9 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Repository\ClassRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
+    <Compile Include="Services\ClassService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -231,6 +234,7 @@
     <Content Include="Areas\Admin\Views\Class\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Create.cshtml" />
+    <Content Include="Areas\Student\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2663,6 +2667,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Student\Controllers\" />
+    <Folder Include="Areas\Student\Data\" />
+    <Folder Include="Areas\Student\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
