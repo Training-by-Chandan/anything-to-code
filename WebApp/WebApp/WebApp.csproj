@@ -235,6 +235,8 @@
     <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Create.cshtml" />
     <Content Include="Areas\Student\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Student\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

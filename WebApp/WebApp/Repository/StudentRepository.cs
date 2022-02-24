@@ -29,5 +29,24 @@ namespace WebApp.Repository
                 return false;
             }
         }
+
+        public Student GetById(int id)
+        {
+            return db.Students.Find(id);
+        }
+
+        public (bool, string) Edit(Student model)
+        {
+            try
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return (true, "Successfully updated");
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
+        }
     }
 }

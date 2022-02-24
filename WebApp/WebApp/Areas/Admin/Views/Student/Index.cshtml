@@ -27,15 +27,25 @@
                     <tr>
                         <th>Full Name</th>
                         <th>Class Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@item.FullName</td>
-                            <td>@item.ClassName</td>
-                        </tr>
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.ClassName</td>
+                        <td>
+                            <a href="/admin/student/edit/@item.Id">
+                                <i class="fa fa-edit"></i>
+                            </a>  
+                            &nbsp; &nbsp;
+                            <a href="/admin/student/delete/@item.Id">
+                                <i class="fa fa-trash" style="color:red"></i>
+                            </a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
