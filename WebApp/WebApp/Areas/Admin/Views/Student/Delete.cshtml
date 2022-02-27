@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-exclamation-circle"></i>
+    </div>
+    @using (Html.BeginForm("DeleteConfirmed", "Student", new { id = ViewBag.StudentId, area = "Admin" }, FormMethod.Get))
+    {
+        <div class="card-body">
+            <h3>Do you want to delete the student?</h3>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-outline-danger">Yes</button>
+            <a href="/admin/student/index" class="btn btn-outline-primary">No</a>
+        </div>
+    }
+</div>

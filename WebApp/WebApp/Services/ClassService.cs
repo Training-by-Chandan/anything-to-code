@@ -5,13 +5,20 @@ using WebApp.Repository;
 
 namespace WebApp.Services
 {
-    public class ClassService
+    public interface IClassService
     {
-        private readonly ClassRepository classRepository;
+        List<SelectListItem> GetClassesSeclect();
+    }
 
-        public ClassService()
+    public class ClassService : IClassService
+    {
+        private readonly IClassRepository classRepository;
+
+        public ClassService(
+            IClassRepository classRepository
+            )
         {
-            this.classRepository = new ClassRepository();
+            this.classRepository = classRepository;
         }
 
         public List<SelectListItem> GetClassesSeclect()

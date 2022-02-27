@@ -3,13 +3,20 @@ using WebApp.Models;
 
 namespace WebApp.Repository
 {
-    public class ClassRepository
+    public interface IClassRepository
+    {
+        IQueryable<Class> GetAll();
+    }
+
+    public class ClassRepository : IClassRepository
     {
         private readonly ApplicationDbContext db;
 
-        public ClassRepository()
+        public ClassRepository(
+            ApplicationDbContext db
+            )
         {
-            this.db = new ApplicationDbContext();
+            this.db = db;
         }
 
         public IQueryable<Class> GetAll()

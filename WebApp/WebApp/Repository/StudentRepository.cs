@@ -6,11 +6,30 @@ using WebApp.Models;
 
 namespace WebApp.Repository
 {
-    public class StudentRepository
+    public interface IStudentRepository
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        bool Create(Student model);
 
-        //todo explain iqueryable
+        (bool, string) Delete(int id);
+
+        (bool, string) Edit(Student model);
+
+        IQueryable<Student> GetAll();
+
+        Student GetById(int id);
+    }
+
+    public class StudentRepository : IStudentRepository
+    {
+        private ApplicationDbContext db;
+
+        public StudentRepository(
+            ApplicationDbContext db
+            )
+        {
+            this.db = db;
+        }
+
         public IQueryable<Student> GetAll()
         {
             return db.Students;
@@ -42,6 +61,21 @@ namespace WebApp.Repository
                 db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return (true, "Successfully updated");
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
+        }
+
+        public (bool, string) Delete(int id)
+        {
+            try
+            {
+                var existing = db.Students.Find(id);
+                db.Students.Remove(existing);
+                db.SaveChanges();
+                return (true, "Deleted Successully");
             }
             catch (Exception ex)
             {

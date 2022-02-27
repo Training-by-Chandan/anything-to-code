@@ -21,7 +21,7 @@ namespace WebApp.ViewModels
         [Required]
         public int ClassId { get; set; }
 
-        public string ClassName { get; set; }
+        public string ClassNames { get; set; }
 
         public string FullName
         {

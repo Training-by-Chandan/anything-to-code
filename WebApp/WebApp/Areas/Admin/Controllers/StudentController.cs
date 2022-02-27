@@ -10,13 +10,16 @@ namespace WebApp.Areas.Admin.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly StudentService studentService;
-        private readonly ClassService classService;
+        private readonly IStudentService studentService;
+        private readonly IClassService classService;
 
-        public StudentController()
+        public StudentController(
+            IStudentService studentService,
+            IClassService classService
+            )
         {
-            this.studentService = new StudentService();
-            this.classService = new ClassService();
+            this.studentService = studentService;
+            this.classService = classService;
         }
 
         [HttpGet]
@@ -87,6 +90,28 @@ namespace WebApp.Areas.Admin.Controllers
                     ViewData["ClassList"] = classService.GetClassesSeclect().AsEnumerable();
                     return View(model);
                 }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            ViewBag.StudentId = id;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var res = studentService.Delete(id);
+            if (res.Item1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = res.Item2;
+                return View("~/Areas/Admin/Views/Shared/Error.cshtml");
             }
         }
     }
