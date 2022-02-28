@@ -218,6 +218,10 @@
     <Compile Include="Migrations\202202211145087_studentAdded.designer.cs">
       <DependentUpon>202202211145087_studentAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202281111315_profilePicture.cs" />
+    <Compile Include="Migrations\202202281111315_profilePicture.designer.cs">
+      <DependentUpon>202202281111315_profilePicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Class.cs" />
@@ -2696,6 +2700,7 @@
     <Folder Include="Areas\Student\Controllers\" />
     <Folder Include="Areas\Student\Data\" />
     <Folder Include="Areas\Student\Views\Shared\" />
+    <Folder Include="Upload\ProfilePicture\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2722,6 +2727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202211145087_studentAdded.resx">
       <DependentUpon>202202211145087_studentAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281111315_profilePicture.resx">
+      <DependentUpon>202202281111315_profilePicture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

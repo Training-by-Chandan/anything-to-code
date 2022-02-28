@@ -38,22 +38,31 @@ namespace WebApp.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentViewModel model)
+        public ActionResult Create(StudentViewModel model, HttpPostedFileBase profile)
         {
             if (!ModelState.IsValid)
             {
                 ViewData["ClassList"] = classService.GetClassesSeclect();
                 return View(model);
             }
-            if (studentService.Create(model))
+            if (profile.ContentLength > 0)
             {
-                return RedirectToAction("Index");
+                var filename = System.IO.Path.GetFileName(profile.FileName);
+                var extension = System.IO.Path.GetExtension(profile.FileName);
+                var generatedFile = Guid.NewGuid().ToString().Replace("-", "") + extension;
+                var path = $"/Upload/ProfilePicture/{generatedFile}";
+                var actualPath = Server.MapPath("~" + path);
+                profile.SaveAs(actualPath);
+
+                model.ProfilePicture = path;
+
+                if (studentService.Create(model))
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            else
-            {
-                ViewData["ClassList"] = classService.GetClassesSeclect();
-                return View(model);
-            }
+            ViewData["ClassList"] = classService.GetClassesSeclect();
+            return View(model);
         }
 
         [HttpGet]
@@ -70,7 +79,7 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(StudentViewModel model)
+        public ActionResult Edit(StudentViewModel model, HttpPostedFileBase profile)
         {
             if (!ModelState.IsValid)
             {
@@ -79,6 +88,23 @@ namespace WebApp.Areas.Admin.Controllers
             }
             else
             {
+                if (profile!=null && profile.ContentLength>0)
+                {
+                    var filename = System.IO.Path.GetFileName(profile.FileName);
+                    var extension = System.IO.Path.GetExtension(profile.FileName);
+                    var generatedFile = Guid.NewGuid().ToString().Replace("-", "") + extension;
+                    var path = $"/Upload/ProfilePicture/{generatedFile}";
+                    var actualPath = Server.MapPath("~" + path);
+                    profile.SaveAs(actualPath);
+
+                    if (!string.IsNullOrWhiteSpace(model.ProfilePicture))
+                    {
+                        System.IO.File.Delete(Server.MapPath("~" + model.ProfilePicture));
+                    }
+
+                    model.ProfilePicture = path;
+                }
+
                 var res = studentService.Edit(model);
                 if (res.Item1)
                 {

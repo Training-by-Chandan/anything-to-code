@@ -30,5 +30,16 @@ namespace WebApp.ViewModels
                 return this.FirstName + " " + this.LastName;
             }
         }
+
+        public string ProfilePicture { get; set; }
+        public string Pic
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(this.ProfilePicture)) return "/Themes/Admin/dist/img/avatar.png";
+
+                return this.ProfilePicture;
+            }
+        }
     }
 }

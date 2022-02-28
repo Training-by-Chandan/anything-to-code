@@ -26,6 +26,7 @@
             <table id="tblStudent" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Full Name</th>
                         <th>Class Name</th>
                         <th>Action</th>
@@ -35,6 +36,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                <img src="@item.Pic" class="img-circle elevation-2" width="50" height="50" />
+                            </td>
                             <td>@item.FullName</td>
                             <td>@item.ClassNames</td>
                             <td>

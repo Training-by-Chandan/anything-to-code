@@ -65,14 +65,8 @@ namespace WebApp.Services
                 if (res == null) return (404, null);
                 else
                 {
-                    return (200, new StudentViewModel()
-                    {
-                        ClassId = res.ClassId,
-                        ClassNames = res.Class != null ? res.Class.Name : "",
-                        FirstName = res.FirstName,
-                        LastName = res.LastName,
-                        Id = res.Id
-                    });
+                    var data = mapper.Map<Student, StudentViewModel>(res);
+                    return (200, data);
                 }
             }
             catch (Exception ex)
