@@ -202,43 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202202161158244_InitialCreate.cs" />
-    <Compile Include="Migrations\202202161158244_InitialCreate.designer.cs">
-      <DependentUpon>202202161158244_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202211131223_additionalDetails.cs" />
-    <Compile Include="Migrations\202202211131223_additionalDetails.designer.cs">
-      <DependentUpon>202202211131223_additionalDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202211136291_classAdded.cs" />
-    <Compile Include="Migrations\202202211136291_classAdded.designer.cs">
-      <DependentUpon>202202211136291_classAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202211145087_studentAdded.cs" />
-    <Compile Include="Migrations\202202211145087_studentAdded.designer.cs">
-      <DependentUpon>202202211145087_studentAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202281111315_profilePicture.cs" />
-    <Compile Include="Migrations\202202281111315_profilePicture.designer.cs">
-      <DependentUpon>202202281111315_profilePicture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Class.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Repository\ClassRepository.cs" />
-    <Compile Include="Repository\StudentRepository.cs" />
-    <Compile Include="Services\ClassService.cs" />
-    <Compile Include="Services\StudentService.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Compile Include="ViewModels\DisplayBoxViewModel.cs" />
-    <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\StudentViewModel.cs" />
-    <Compile Include="ViewModels\Widget.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -2716,21 +2682,22 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202161158244_InitialCreate.resx">
-      <DependentUpon>202202161158244_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202211131223_additionalDetails.resx">
-      <DependentUpon>202202211131223_additionalDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202211136291_classAdded.resx">
-      <DependentUpon>202202211136291_classAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202211145087_studentAdded.resx">
-      <DependentUpon>202202211145087_studentAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202281111315_profilePicture.resx">
-      <DependentUpon>202202281111315_profilePicture.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\WebApp.Context\WebApp.Context.csproj">
+      <Project>{b02ed9ad-64ff-4f05-8d4e-2eef152295fe}</Project>
+      <Name>WebApp.Context</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApp.Models\WebApp.Models.csproj">
+      <Project>{679f7712-e155-474e-944b-52d027088801}</Project>
+      <Name>WebApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApp.Repository\WebApp.Repository.csproj">
+      <Project>{b419be6b-19b5-4106-99bb-66fd2fea2d0d}</Project>
+      <Name>WebApp.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApp.Services\WebApp.Services.csproj">
+      <Project>{e951e016-6238-4455-9150-1747ad7070b5}</Project>
+      <Name>WebApp.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
