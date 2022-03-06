@@ -41,5 +41,13 @@ namespace WebApp.ViewModels
                 return this.ProfilePicture;
             }
         }
+
+        [Required]
+        [EmailAddress]
+        public string Username { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

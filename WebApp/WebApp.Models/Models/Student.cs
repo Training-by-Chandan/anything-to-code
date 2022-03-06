@@ -13,5 +13,9 @@ namespace WebApp.Models
         public virtual Class Class { get; set; }
 
         public string ProfilePicture { get; set; }
+
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
     }
 }

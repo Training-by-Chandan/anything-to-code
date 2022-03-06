@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WebApp.Models;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace WebApp
 {
@@ -28,6 +30,12 @@ namespace WebApp
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your SMS service here to send a text message.
+            string accountId = "AC8a339c630951de9967f98fea34207fe5";
+            string accountKey = "167eba2f88e865c627a55c8ea167afb8";
+            string phone = "+19402894940";
+            TwilioClient.Init(accountId, accountKey);
+            var msg = MessageResource.Create(body: message.Body, from: new Twilio.Types.PhoneNumber(phone), to: new Twilio.Types.PhoneNumber(message.Destination));
+            var sid = msg.Sid;
             return Task.FromResult(0);
         }
     }
@@ -40,7 +48,7 @@ namespace WebApp
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -81,7 +89,7 @@ namespace WebApp
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

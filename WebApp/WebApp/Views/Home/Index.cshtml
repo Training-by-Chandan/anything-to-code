@@ -1,16 +1,32 @@
-﻿    @using WebApp.ViewModels
+﻿@using WebApp.ViewModels
 @{
-ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    @Html.Partial("~/Views/PartialComponents/_PartialDisplayBox.cshtml", new DisplayBoxViewModel() { BoxType = "success", Icon = "copy", Body = "80% in 30 days", Numbers = "23,990", Progress = 80, Title = "Sales" })
-    @Html.Partial("~/Views/PartialComponents/_PartialDisplayBox.cshtml", new DisplayBoxViewModel() { BoxType = "danger", Icon = "copy", Body = "50% in 30 days", Numbers = "2,990", Progress = 50, Title = "Purchase" })
-</div>
+
+@if (User.IsInRole("Student"))
+{
+    <div class="jumbotron">
+        <h1>Student</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+}
+@if (User.IsInRole("Teacher"))
+{
+    <div class="jumbotron">
+        <h1>Teacher</h1>
+
+    </div>
+}
+
+@if (User.IsInRole("Admin"))
+{
+
+    <div class="row">
+        @Html.Partial("~/Views/PartialComponents/_PartialDisplayBox.cshtml", new DisplayBoxViewModel() { BoxType = "success", Icon = "copy", Body = "80% in 30 days", Numbers = "23,990", Progress = 80, Title = "Sales" })
+        @Html.Partial("~/Views/PartialComponents/_PartialDisplayBox.cshtml", new DisplayBoxViewModel() { BoxType = "danger", Icon = "copy", Body = "50% in 30 days", Numbers = "2,990", Progress = 50, Title = "Purchase" })
+    </div>
+}
 
 @*@section Scripts{
     <script>

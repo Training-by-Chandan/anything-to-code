@@ -78,6 +78,14 @@
     <Compile Include="Migrations\202202281111315_profilePicture.Designer.cs">
       <DependentUpon>202202281111315_profilePicture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203021154347_test.cs" />
+    <Compile Include="Migrations\202203021154347_test.designer.cs">
+      <DependentUpon>202203021154347_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203061134542_UserIdInStudent.cs" />
+    <Compile Include="Migrations\202203061134542_UserIdInStudent.designer.cs">
+      <DependentUpon>202203061134542_UserIdInStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +114,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202281111315_profilePicture.resx">
       <DependentUpon>202202281111315_profilePicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203021154347_test.resx">
+      <DependentUpon>202203021154347_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203061134542_UserIdInStudent.resx">
+      <DependentUpon>202203061134542_UserIdInStudent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,30 +27,64 @@ namespace WebApp.Services
     {
         private readonly IStudentRepository studentRepository;
         private readonly IMapper mapper;
+        private readonly IUserRepository userRepository;
 
         public StudentService(
             IStudentRepository studentRepository,
-            IMapper mapper
+            IMapper mapper,
+            IUserRepository userRepository
             )
         {
             this.studentRepository = studentRepository;
             this.mapper = mapper;
+            this.userRepository = userRepository;
         }
 
         public List<StudentViewModel> GetAll()
         {
-            var data = studentRepository.GetAll().ToList();
-            var result = mapper.Map<List<Student>, List<StudentViewModel>>(data);
-            return result;
+            try
+            {
+                throw new Exception("Throwing this exception intentionally");
+                var data = studentRepository.GetAll().ToList();
+                var result = mapper.Map<List<Student>, List<StudentViewModel>>(data);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                return null;
+            }
         }
 
         public bool Create(StudentViewModel model)
         {
             try
             {
-                var student = mapper.Map<StudentViewModel, Student>(model);
-                var res = studentRepository.Create(student);
-                return res;
+                //create student user
+                var hash = new PasswordHasher();
+                var applicationUser = new ApplicationUser()
+                {
+                    UserName = model.Username,
+                    PasswordHash = hash.HashPassword(model.Password),
+                    Email = model.Username
+                };
+                var result = userRepository.CreateUser(applicationUser);
+                if (result.Item1)
+                {
+                    //create student
+                    var student = mapper.Map<StudentViewModel, Student>(model);
+                    student.UserId = result.Item2.Id;
+                    var res = studentRepository.Create(student);
+                    //assign role "student"
+                    var roleResult = userRepository.AssignUserToRole(result.Item2.Id, "Student");
+                    //send email
+
+                    return res;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
