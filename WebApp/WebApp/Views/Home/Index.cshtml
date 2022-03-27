@@ -3,6 +3,9 @@
     ViewBag.Title = "Home Page";
 }
 
+<div id="name"></div>
+<div id="email"></div>
+
 @if (User.IsInRole("Student"))
 {
     <div class="jumbotron">
@@ -28,10 +31,20 @@
     </div>
 }
 
-@*@section Scripts{
+@section Scripts{
     <script>
-        $(document).ready(function () {
-            alert("page is loaded completely");
+
+        $.ajax({
+            url: "https://localhost:44368/api/students/getstudent/2",
+            method: "GET"
+        }).done(function (data) {
+            //var json = JSON.parse(data);
+            document.getElementById('name').innerHTML = data.Name;
+            document.getElementById('email').innerHTML = data.Email;
+        }).fail(function (err) {
+            console.log(err);
         });
+
+      
     </script>
-    }*@
+}
