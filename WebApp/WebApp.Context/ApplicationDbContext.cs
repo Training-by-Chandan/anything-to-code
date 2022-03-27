@@ -17,5 +17,6 @@ namespace WebApp.Models
 
         public DbSet<Class> Classes { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<GithubModel> GithubModels { get; set; }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model List<WebApp.ViewModels.GithubViewModel>
+
+@{
+    ViewBag.Title = "Github";
+}
+
+<h2>Github</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Info
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+               @item.PayloadObj.repository.full_name, @item.PayloadObj.head_commit.message
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

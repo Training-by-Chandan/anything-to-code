@@ -86,6 +86,10 @@
     <Compile Include="Migrations\202203061134542_UserIdInStudent.designer.cs">
       <DependentUpon>202203061134542_UserIdInStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203081105262_githbmodel.cs" />
+    <Compile Include="Migrations\202203081105262_githbmodel.designer.cs">
+      <DependentUpon>202203081105262_githbmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203061134542_UserIdInStudent.resx">
       <DependentUpon>202203061134542_UserIdInStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203081105262_githbmodel.resx">
+      <DependentUpon>202203081105262_githbmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

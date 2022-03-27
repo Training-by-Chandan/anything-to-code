@@ -36,6 +36,7 @@ namespace WebApp
             container.RegisterType<IClassRepository, ClassRepository>();
             container.RegisterType<IStudentRepository, StudentRepository>();
             container.RegisterType<IUserRepository, UserRepository>();
+            container.RegisterType<IGithubRepository, GithubRepository>();
 
             #endregion Repository
 

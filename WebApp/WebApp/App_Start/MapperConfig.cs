@@ -15,6 +15,7 @@ namespace WebApp
                     dest.ClassNames = src.Class != null ? src.Class.Name : "";
                 });
                 cfg.CreateMap<StudentViewModel, Student>();
+                cfg.CreateMap<GithubModel, GithubViewModel>().ReverseMap();
             });
 
             return mapperConfiguration;
