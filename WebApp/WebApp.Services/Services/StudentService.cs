@@ -44,7 +44,7 @@ namespace WebApp.Services
         {
             try
             {
-                throw new Exception("Throwing this exception intentionally");
+              
                 var data = studentRepository.GetAll().ToList();
                 var result = mapper.Map<List<Student>, List<StudentViewModel>>(data);
                 return result;
